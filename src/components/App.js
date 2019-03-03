@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const App = () => {
   return (
-    <div>
+    <div className="ui container">
       Hello!
     </div>
   );
