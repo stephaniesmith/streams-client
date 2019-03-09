@@ -6,6 +6,11 @@ import { createStream } from '../../actions';
 
 class StreamCreate extends Component {
 
+  static propTypes = {
+    createStream: PropTypes.func,
+    handleSubmit: PropTypes.func,
+  };
+
   renderInput = ({ input, label, meta }) => {
     const { error, touched } = meta;
     const className = `field ${error && touched ? 'error' : ''}`;
@@ -19,11 +24,11 @@ class StreamCreate extends Component {
         </div>
       </div>
     );
-  }
+  };
 
-  onSubmit(formValues) {
+  onSubmit = formValues => {
     this.props.createStream(formValues);
-  }
+  };
 
   render() {
     const { handleSubmit } = this.props;
