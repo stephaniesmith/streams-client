@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchStreams } from '../../actions';
 
 
@@ -8,6 +9,8 @@ class StreamList extends Component {
 
   static propTypes = {
     fetchStreams: PropTypes.func,
+    currentUserId: PropTypes.string,
+    isSignedIn: PropTypes.bool,
   };
   
   componentDidMount = () => {
@@ -26,7 +29,7 @@ class StreamList extends Component {
   );
   
   render() {
-    const { streams, currentUserId } = this.props;
+    const { streams, currentUserId, isSignedIn } = this.props;
 
     return (
       <main>
@@ -43,6 +46,11 @@ class StreamList extends Component {
             </section>
           ))}
         </div>
+        {isSignedIn &&
+          <div style={{ textAlign: 'right' }}>
+            <Link to="/stream/new" className="ui button primary">Create Stream</Link>
+          </div>
+        }
       </main>
     );
   }
@@ -50,7 +58,8 @@ class StreamList extends Component {
 
 const mapStateToProps = ({ streams, auth }) => ({
   streams: Object.values(streams),
-  currentUserId: auth.userId
+  currentUserId: auth.userId,
+  isSignedIn: auth.isSignedIn
 });
 
 export default connect(mapStateToProps, { fetchStreams })(StreamList);
