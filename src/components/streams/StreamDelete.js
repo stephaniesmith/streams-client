@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const StreamDelete = () => {
   return (
@@ -9,8 +9,8 @@ const StreamDelete = () => {
   );
 };
 
-StreamDelete.propTypes = {
+// StreamDelete.propTypes = {
 
-};
+// };
 
 export default StreamDelete;

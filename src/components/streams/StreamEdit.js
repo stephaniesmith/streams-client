@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const StreamEdit = () => {
   return (
@@ -9,8 +9,8 @@ const StreamEdit = () => {
   );
 };
 
-StreamEdit.propTypes = {
+// StreamEdit.propTypes = {
 
-};
+// };
 
 export default StreamEdit;
