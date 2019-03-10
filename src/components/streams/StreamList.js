@@ -17,14 +17,14 @@ class StreamList extends Component {
     this.props.fetchStreams();
   };
 
-  renderAdminButtons = () => (
+  renderAdminButtons = id => (
     <div className="right floated content">
-      <button className="ui button primary">
+      <Link to={`/stream/edit/${id}`} className="ui button primary">
         Edit
-      </button>
-      <button className="ui button negative">
+      </Link>
+      <Link to={'/'} className="ui button negative">
         Delete
-      </button>
+      </Link>
     </div>
   );
   
@@ -37,7 +37,7 @@ class StreamList extends Component {
         <div className="ui celled list">
           {streams.map(({ id, title, description, userId }) => (
             <section className="item" key={id}>
-              {userId === currentUserId && this.renderAdminButtons()}
+              {userId === currentUserId && this.renderAdminButtons(id)}
               <i className="large middle aligned icon camera"/>
               <div className="content">
                 {title}
