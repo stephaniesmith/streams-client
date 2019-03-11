@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Modal from '../Modal';
 import history from '../../history';
-import { fetchStream } from '../../actions';
+import { deleteStream, fetchStream } from '../../actions';
 
 class StreamDelete extends Component {
 
@@ -19,10 +20,11 @@ class StreamDelete extends Component {
   }
 
   renderActions() {
+    const { id } = this.props.match.params;
     return (
       <Fragment>
-        <button className="ui button">Cancel</button>
-        <button className="ui button negative">Delete</button>
+        <Link to={'/'} className="ui button">Cancel</Link>
+        <button onClick={() => this.props.deleteStream(id)} className="ui button negative">Delete</button>
       </Fragment>
     );
   }
@@ -47,4 +49,4 @@ const mapStateToProps = ({ streams }, { match }) => ({
   stream: streams[match.params.id]
 });
 
-export default connect(mapStateToProps, { fetchStream })(StreamDelete);
+export default connect(mapStateToProps, { fetchStream, deleteStream })(StreamDelete);
